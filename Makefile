@@ -1,10 +1,15 @@
 CXXFLAGS=-std=c++11 -g -fPIC
 
-TARGETS = 
+OBJECTS=main.o field.o game.o player.o
+
+TARGETS = tron
 
 all: $(TARGETS)
 
-%.o: %.cpp field.hpp player.hpp
+tron: $(OBJECTS)
+	$(CXX) $(OBJECTS) -o tron -g -lglut -lGL -lGLU
+
+%.o: %.cpp field.hpp player.hpp game.hpp
 	$(CXX) -c $< -o $@ $(CXXFLAGS)
 
 clean:

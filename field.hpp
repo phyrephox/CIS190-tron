@@ -10,7 +10,7 @@ public:
   Field();
   void setBlock(Type, int x, int y);
   Type block (int x, int y) const;
-  void draw(Painter &) const;
+  void draw() const;
 private:
   Type map_[HEIGHT][WIDTH];
 };

@@ -1,8 +1,8 @@
 #include "field.hpp"
 #include "player.hpp"
 
-Player::Player(int num):
-  playernum_(num) {
+void Player::set(int num){
+  playernum_ = num;
   if (num == 1){
     movement_ = UP;
     x_ = 60;

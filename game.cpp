@@ -1,10 +1,12 @@
 #include "game.hpp"
-#include "painter.hpp"
 #include "field.hpp"
+#include "player.hpp"
 
 Game::Game() {
-	player1_ = Player(1);
-	player2_ = Player(2);
+	player1_ = Player();
+	player1_.set(1);
+	player2_ = Player();
+	player2_.set(2);
 	field_ = Field();
 }
 
@@ -12,8 +14,10 @@ void Game::tick()
 {
 	// Update for GUI
 	if (!player1_.tick(field_) || !player2_.tick(field_)) {
-		player1_ = Player(1);
-		player2_ = Player(2);
+		player1_ = Player();
+		player1_.set(1);
+		player2_ = Player();
+		player2_.set(2);
 		field_ = Field();
 	}
 }
