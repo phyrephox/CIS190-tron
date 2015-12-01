@@ -9,7 +9,7 @@ class Game
 public:
 	void tick();
 	void draw(Painter &) const;
-	void keyEvent(Player::Direction);// to be changed
+	void keyEvent(Player::Direction, int);// to be changed
 private:
 	Field field_;
 	Player player1_;
