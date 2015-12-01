@@ -7,6 +7,7 @@ class Painter;
 class Game
 {
 public:
+	Game ();
 	void tick();
 	void draw(Painter &) const;
 	void keyEvent(Player::Direction, int);// to be changed
