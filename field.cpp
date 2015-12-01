@@ -1,6 +1,9 @@
-//#include "painter.hpp"
 #include "field.hpp"
-#include <OpenGL/gl.h> //for mac
+#ifdef __APPLE__
+  #include <OpenGL/gl.h>
+#elif
+  #include <GL/gl.h>
+#endif
 
 Field::Field(){
   for (int i = 0; i<WIDTH; i++){

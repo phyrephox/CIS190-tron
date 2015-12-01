@@ -33,7 +33,8 @@ bool Player::tick(Field &f){
   if (f.block(x_, y_) != f.Type::EMPTY){
     return false;
   }
-  f.setBlock(f.Type::PLAYER1, x_, y_);
+  f.setBlock(playernum_ == 1 ? f.Type::PLAYER1 : f.Type::PLAYER2, x_, y_);
+  return true;
 }
 
 void Player::keyEvent(Direction d){
