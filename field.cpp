@@ -25,7 +25,7 @@ Field::Type Field::block(int x, int y) const{
 void Field::draw() const {
   for (int i = 0; i<WIDTH; i++){
     for (int j = 0; j<HEIGHT; j++){
-      glColor3f(0, 0, 1);
+      glColor3f(1, 1, 0);
       switch (map_[i][j]) {
         case EMPTY :
           break;
@@ -36,6 +36,7 @@ void Field::draw() const {
           glVertex2f(i*BLOCK_WIDTH, j*BLOCK_HEIGHT);
           glVertex2f((i+1)*BLOCK_WIDTH, j*BLOCK_HEIGHT);
           glVertex2f(i*BLOCK_WIDTH, (j+1)*BLOCK_HEIGHT);
+          glVertex2f((i+1)*BLOCK_WIDTH, (j+1)*BLOCK_HEIGHT);
           glEnd();
           break;
       }

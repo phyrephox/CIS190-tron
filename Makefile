@@ -7,7 +7,7 @@ TARGETS = tron
 all: $(TARGETS)
 
 tron: $(OBJECTS)
-	$(CXX) $(OBJECTS) -o tron -g -lglut -lGL -lGLU
+	$(CXX) $(OBJECTS) -o tron -g -framework OpenGL -framework GLUT
 
 %.o: %.cpp field.hpp player.hpp game.hpp
 	$(CXX) -c $< -o $@ $(CXXFLAGS)

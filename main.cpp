@@ -1,7 +1,7 @@
 #include "game.hpp"
 
 #ifdef __APPLE__
-  #include <OPENGL/GLUT.h>
+  #include <GLUT/glut.h>  
 #else
   #include <GL/gl.h>
   #include <GL/glu.h>
@@ -42,16 +42,16 @@ void keyEventS(int key, int, int) {
 void keyEventN(unsigned char key, int, int) {
   switch (key) {
   case 'a':
-    game.keyEvent(Player::LEFT, 1);
+    game.keyEvent(Player::LEFT, 2);
     break;
   case 'd':
-    game.keyEvent(Player::RIGHT, 1);
+    game.keyEvent(Player::RIGHT, 2);
     break;
   case 'w':
-    game.keyEvent(Player::UP, 1);
+    game.keyEvent(Player::UP, 2);
     break;
   case 's':
-    game.keyEvent(Player::DOWN, 1);
+    game.keyEvent(Player::DOWN, 2);
     break;
   }
 }
