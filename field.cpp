@@ -1,5 +1,6 @@
 //#include "painter.hpp"
 #include "field.hpp"
+#include <OpenGL/gl.h> //for mac
 
 Field::Field(){
   for (int i = 0; i<WIDTH; i++){
@@ -17,12 +18,25 @@ Field::Type Field::block(int x, int y) const{
   return map_[x][y];
 }
 
-/*
-void Field::draw(Painter &p) {
+
+void Field::draw() {
   for (int i = 0; i<WIDTH; i++){
     for (int j = 0; j<HEIGHT; j++){
-      p.draw(map_[i][j], i, j);
+      glColor3f(0, 0, 1);
+      switch (map_[i][j]) {
+        case EMPTY :
+          break;
+        case PLAYER1 :
+          glColor3f(0, 1, 0);
+        case PLAYER2:
+          glBegin(GL_QUADS);
+          glVertex2f(i*BLOCK_WIDTH, y*BLOCK_HEIGHT);
+          glVertex2f((i+1)*BLOCK_WIDTH, y*BLOCK_HEIGHT);
+          glVertex2f(i*BLOCK_WIDTH, (y+1)*BLOCK_HEIGHT);
+          glEnd();
+          break;
+      }
     }
   }
 }
-*/
+
