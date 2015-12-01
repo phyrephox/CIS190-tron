@@ -2,10 +2,16 @@
 #include "painter.hpp"
 #include "field.hpp"
 
+Game::Game() {
+	player1_ = Player(1);
+	player2_ = Player(2);
+	field_ = Field();
+}
+
 void Game::tick()
 {
 	// Update for GUI
-	if (!player1_tick(_field)) {
+	if (!player1_.tick(field_) || !player2_.tick(field_)) {
 		player1_ = Player(1);
 		player2_ = Player(2);
 		field_ = Field();
