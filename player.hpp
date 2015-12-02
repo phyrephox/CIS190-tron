@@ -4,7 +4,7 @@ class Field;
 
 class Player {
 public:
-  enum Direction { LEFT, UP, RIGHT, DOWN };
+  enum Direction { LEFT, UP, RIGHT, DOWN, ENTER };
   void set(int num);
   bool tick(Field &);
   void keyEvent(Direction);

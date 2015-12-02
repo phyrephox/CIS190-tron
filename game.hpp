@@ -4,15 +4,18 @@
 
 class Painter;
 
-class Game
-{
+class Game {
 public:
-	Game ();
-	void tick();
-	void draw() const;
-	void keyEvent(Player::Direction, int);// to be changed
+  Game ();
+  void tick();
+  void draw() const;
+  void keyEvent(Player::Direction, int);// to be changed
+  void reset();
 private:
-	Field field_;
-	Player player1_;
-	Player player2_;
+  Field field_;
+  Player player1_;
+  Player player2_;
+  enum { PLAYING, MENU } state_;
+  int p1_score_;
+  int p2_score_;
 };

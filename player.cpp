@@ -6,13 +6,13 @@ void Player::set(int num){
   if (num == 1){
     movement_ = UP;
     direction_ = UP;
-    x_ = 60;
-    y_ = 60;
+    x_ = Field::WIDTH*3/4;
+    y_ = Field::HEIGHT*3/4;
   } else {
     movement_ = DOWN;
     direction_ = DOWN;
-    x_ = 20;
-    y_ = 20;
+    x_ = Field::WIDTH*1/4;
+    y_ = Field::HEIGHT*1/4;
   }
 }
 
@@ -32,13 +32,13 @@ bool Player::tick(Field &f){
       y_ += 1;
       break;
   }
-  if (f.block(x_, y_) != f.Type::EMPTY){
+  if (f.block(x_, y_) != Field::Type::EMPTY){
     return false;
   }
-  if (x_ >= f.WIDTH || y_ >= f.HEIGHT || x_ < 0 || y_ < 0) {
+  if (x_ >= Field::WIDTH || y_ >= Field::HEIGHT || x_ < 0 || y_ < 0) {
     return false;
   }
-  f.setBlock(playernum_ == 1 ? f.Type::PLAYER1 : f.Type::PLAYER2, x_, y_);
+  f.setBlock(playernum_ == 1 ? Field::Type::PLAYER1 : Field::Type::PLAYER2, x_, y_);
   return true;
 }
 

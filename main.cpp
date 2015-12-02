@@ -8,6 +8,8 @@
   #include <GL/glut.h>
 #endif
 
+#include <iostream>
+
 Game game;
 
 void display() {
@@ -53,6 +55,8 @@ void keyEventN(unsigned char key, int, int) {
   case 's':
     game.keyEvent(Player::DOWN, 2);
     break;
+  case 13:
+    game.keyEvent(Player::ENTER, 1); // for menu system
   }
 }
 
