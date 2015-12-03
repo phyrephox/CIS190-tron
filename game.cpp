@@ -79,13 +79,15 @@ void Game::resetString() {
   string_width_ = 0;
 }
 
-void Game::renderString(const std::string str) {
+void Game::renderString(float x, float y, const std::string str) {
   const char *c;
+  setTextPosition(x, y);
   for (int i = 0; i<str.length(); i++){
     glutStrokeCharacter(GLUT_STROKE_ROMAN, str[i]);
     string_width_ += glutStrokeWidth(GLUT_STROKE_ROMAN, str[i]);
   }
   resetString();
+  setTextPosition(-x, -y);
 }
 
 void Game::draw() {
@@ -96,15 +98,12 @@ void Game::draw() {
     setOrthographicProjection();
     glPushMatrix();
     glLoadIdentity();
-    setTextPosition(50,100);
     setTextSize(.25,.5);
-    renderString("PRESS ENTER TO START!");
-    setTextPosition(100,900);
+    renderString(50,100,"PRESS ENTER TO START!");
     glColor3d(1,1,0);
-    renderString(std::to_string(p2_score_));
-    setTextPosition(700,0);
+    renderString(50,900,std::to_string(p2_score_));
     glColor3d(0,1,0);
-    renderString(std::to_string(p1_score_));
+    renderString(700,700,std::to_string(p1_score_));
     glPopMatrix();
     resetProjection();
     //draw menu

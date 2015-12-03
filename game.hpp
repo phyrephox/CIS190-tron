@@ -14,7 +14,7 @@ public:
   void keyEvent(Player::Direction, int);// to be changed
   void reset();
 private:
-  void renderString(const std::string);
+  void renderString(float x, float y, const std::string);
   void resetString();
   Field field_;
   Player player1_;
