@@ -5,9 +5,13 @@
 #include <iostream>
 #include <string>
 
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/glut.h>
+#ifdef __APPLE__
+  #include <GLUT/glut.h>  
+#else
+  #include <GL/gl.h>
+  #include <GL/glu.h>
+  #include <GL/glut.h>
+#endif
 
 Game::Game() {
   player1_ = Player();
@@ -100,6 +104,8 @@ void Game::draw() {
     glLoadIdentity();
     setTextSize(.25,.5);
     renderString(50,100,"PRESS ENTER TO START!");
+    setTextSize(.25,.5);
+    renderString("PRESS ENTER TO START!");
     glColor3d(1,1,0);
     renderString(50,900,std::to_string(p2_score_));
     glColor3d(0,1,0);
