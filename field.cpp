@@ -35,8 +35,8 @@ void Field::draw() const {
           glBegin(GL_QUADS);
           glVertex2f(i*BLOCK_WIDTH, j*BLOCK_HEIGHT);
           glVertex2f((i+1)*BLOCK_WIDTH, j*BLOCK_HEIGHT);
-          glVertex2f(i*BLOCK_WIDTH, (j+1)*BLOCK_HEIGHT);
           glVertex2f((i+1)*BLOCK_WIDTH, (j+1)*BLOCK_HEIGHT);
+          glVertex2f(i*BLOCK_WIDTH, (j+1)*BLOCK_HEIGHT);
           glEnd();
           break;
       }

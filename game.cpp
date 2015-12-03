@@ -3,6 +3,11 @@
 #include "player.hpp"
 
 #include <iostream>
+#include <string>
+
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
 
 Game::Game() {
   player1_ = Player();
@@ -13,6 +18,7 @@ Game::Game() {
   state_ = MENU;
   p1_score_ = 0;
   p2_score_ = 0;
+  string_width_ = 0;
 }
 
 void Game::tick() {
@@ -40,10 +46,67 @@ void Game::reset(){
   state_ = MENU;
 }
 
-void Game::draw() const {
+void setOrthographicProjection() {
+  glMatrixMode(GL_PROJECTION);
+  glPushMatrix();
+  glLoadIdentity();
+  gluOrtho2D(0, Field::WIDTH*Field::BLOCK_WIDTH, 0, Field::HEIGHT * Field::BLOCK_HEIGHT);
+  //glTranslatef(0,-Field::HEIGHT*Field::BLOCK_HEIGHT,0);
+  //glTranslatef(0,Field::HEIGHT*Field::BLOCK_HEIGHT,0);
+  glMatrixMode(GL_MODELVIEW);
+}
+
+void setTextPosition(float x, float y) {
+  glMatrixMode(GL_PROJECTION);
+  glTranslatef(x,y,0);
+  glMatrixMode(GL_MODELVIEW);
+}
+
+void setTextSize(float x, float y) {
+  glMatrixMode(GL_PROJECTION);
+  glScalef(x,y,0);
+  glMatrixMode(GL_MODELVIEW);
+}
+
+void resetProjection() {
+  glMatrixMode(GL_PROJECTION);
+  glPopMatrix();
+  glMatrixMode(GL_MODELVIEW);
+}
+
+void Game::resetString() {
+  setTextPosition(-string_width_, 0);
+  string_width_ = 0;
+}
+
+void Game::renderString(const std::string str) {
+  const char *c;
+  for (int i = 0; i<str.length(); i++){
+    glutStrokeCharacter(GLUT_STROKE_ROMAN, str[i]);
+    string_width_ += glutStrokeWidth(GLUT_STROKE_ROMAN, str[i]);
+  }
+  resetString();
+}
+
+void Game::draw() {
   if (state_ == PLAYING){
     field_.draw();
   } else if (state_ == MENU) {
+    glColor3d(1,1,1);
+    setOrthographicProjection();
+    glPushMatrix();
+    glLoadIdentity();
+    setTextPosition(50,100);
+    setTextSize(.25,.5);
+    renderString("PRESS ENTER TO START!");
+    setTextPosition(100,900);
+    glColor3d(1,1,0);
+    renderString(std::to_string(p2_score_));
+    setTextPosition(700,0);
+    glColor3d(0,1,0);
+    renderString(std::to_string(p1_score_));
+    glPopMatrix();
+    resetProjection();
     //draw menu
   }
 }

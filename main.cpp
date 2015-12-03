@@ -68,6 +68,7 @@ int main (int argc, char* argv[]) {
   glutInitWindowPosition(100,100);
   glutCreateWindow("TRON");
   glClearColor(0,0,0,1);
+  glLineWidth(3);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   glOrtho(0, Field::WIDTH * Field::BLOCK_WIDTH,
