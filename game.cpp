@@ -98,18 +98,17 @@ void Game::draw() {
   if (state_ == PLAYING){
     field_.draw();
   } else if (state_ == MENU) {
-    glColor3d(1,1,1);
+    glColor3d(.6,0.65,0.65);
     setOrthographicProjection();
     glPushMatrix();
     glLoadIdentity();
     setTextSize(.25,.5);
-    renderString(50,100,"PRESS ENTER TO START!");
-    setTextSize(.25,.5);
-    renderString("PRESS ENTER TO START!");
-    glColor3d(1,1,0);
-    renderString(50,900,std::to_string(p2_score_));
-    glColor3d(0,1,0);
-    renderString(700,700,std::to_string(p1_score_));
+    renderString(330,100,"PRESS ENTER TO START!");
+    renderString(980,900,"TRON");
+    glColor3d(0.3,0.8,0.8);
+    renderString(550,650,std::to_string(p2_score_));
+    glColor3d(0.95, 0.6,0.4);
+    renderString(1680,650,std::to_string(p1_score_));
     glPopMatrix();
     resetProjection();
     //draw menu
